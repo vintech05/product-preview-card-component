@@ -20,10 +20,19 @@ body {
   background-color: hsl(0, 0%, 100%);
   border-radius: 12px;
 }
-.product-card .product-card__image img {
+.product-card .product-card__image {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.product-card .product-card__image img:first-child {
   height: auto;
   width: 360px;
-  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 0.5em 0 0 0.5em;
 }
 .product-card .product-card__image img:last-child {
