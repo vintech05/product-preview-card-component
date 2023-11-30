@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
+$dark-cyan:  hsl(158, 36%, 37%);
+$dark-cyan-hover:  hsl(161, 34%, 22%);
+$cream:  hsl(30, 38%, 92%);
+
+$very-dark-blue: hsl(212, 21%, 14%);
+$dark-grayish-blue: hsl(228, 12%, 48%);
+$white: hsl(0, 0%, 100%);
+
+$font-size: 14px;
+$fraunces: 'Fraunces', serif;
+$montserrat: 'Montserrat', sans-serif;
+$small: 450px;
+$extra-small: 375px;
+
+@mixin flex-general {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin flex-row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+   @include flex-general;
+    background-color: $cream;
+    min-height: 100vh
+}
+
+.product-card {
+    @include flex-general;
+    background-color: $white;
+    border-radius: 12px;
+
+    .product-card__image img {
+        height: auto;
+        width: 360px;
+        overflow: hidden;
+        border-radius: .5em 0 0 .5em;
+
+        &:last-child {
+            display: none;
+        }
+    }
+    
+    .product-card__content {
+        padding-right: 2.5em;
+        padding-left: 2.5em;
+        text-align: left;
+        
+        .product-card__name,
+        .product-card__prices,
+        .product-card__description {
+            font-family: $montserrat;
+        }
+    
+        .product-card__name {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-top: 1em;
+            padding-bottom: 2em;
+            color: $dark-grayish-blue;
+        }
+    
+        .product-card__headlines {
+            width: 12em;
+            font-size: 1.2em;
+            line-height: 2em;
+            padding-bottom: 1.5em;
+            font-family: $fraunces;
+        }
+    
+        .product-card__description {
+            width: 16em;
+            line-height: 1.8em;
+            color: $dark-grayish-blue;
+        }
+        
+        .product-card__prices {
+            @include flex-row;
+            gap: 1.5em;
+            padding-top: 2em;
+            padding-bottom: 2em;
+            color: $dark-cyan;
+            & p {
+                font-family: $fraunces;
+                font-size: 2.5em;
+            }
+            & span {
+                font-family: $montserrat;
+                text-decoration: line-through;
+                color: $dark-grayish-blue;
+            }
+        }
+        .product__cta {
+            @include flex-general;
+            & button {
+                cursor: pointer;
+                gap: 1em;
+                border: none;
+                outline: none;
+                font-family: $montserrat;
+                font-weight: bold;
+                color: $white;
+                padding-block: 1.2em;
+                padding-inline: 6em;
+                border-radius: .55em;
+                background-color: $dark-cyan;
+                transition: 200ms ease-in-out all;
+                &:hover {
+                    background-color: $dark-cyan-hover;
+                }
+            }
+        }   & button span {
+            @include flex-row-reverse;
+            font-size: 1.15em;
+            gap: 1em;
+        }
+    }
+}
+
+@media (max-width: $small) {
+
+    body {
+        margin-block: 2em
+    }
+
+    .product-card {
+        @include flex-col;
+
+        .product-card__image img {
+            border-radius: .5em .5em 0 0;
+        }
+
+        .product-card__name {
+            padding-top: 2em;
+        }
+
+        .product-card__headlines h1 {
+            width: 10em;
+        }
+
+        .product-card__description p {
+            width: 21rem;
+        }
+
+        .product__cta {
+            margin-bottom: 2em;
+            & button > *  {
+                padding-inline: 2em;
+            }
+            & button span {
+                @include flex-row-reverse;
+                gap: 1em;
+            }
+        }
+    }
+
+    #image-product-desktop {
+        display: none;
+    }
+
+    #image-product-mobile {
+        display: block;
+        width: 425px;
+    }
+}
+
+@media ( max-width: $extra-small ) {
+        .product-card {  
+            .product-card__content {
+                padding-left: 3em;
+            }
+        }
+        .product__cta {
+            & button span {
+                font-size: 4em;
+            }
+        }
+}
