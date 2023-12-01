@@ -10,8 +10,8 @@ $white: hsl(0, 0%, 100%);
 $font-size: 14px;
 $fraunces: 'Fraunces', serif;
 $montserrat: 'Montserrat', sans-serif;
-$small: 450px;
-$extra-small: 375px;
+$small: 650px;
+$extra-small: 380px;
 
 @mixin flex-general {
     display: flex;
@@ -56,6 +56,7 @@ body {
 
     .product-card__image {
         display: block;
+        max-width: 100%;
         line-height: 0;
 
         & img:first-child {
@@ -146,15 +147,15 @@ body {
 
 @media (max-width: $small) {
 
-    body {
-        margin-block: 2em
-    }
-
     .product-card {
         @include flex-col;
 
         .product-card__image img {
             border-radius: .5em .5em 0 0;
+        }
+
+        .product-card__content {
+            padding-left: 2em;
         }
 
         .product-card__name {
@@ -187,19 +188,19 @@ body {
 
     #image-product-mobile {
         display: block;
-        width: 425px;
+        max-width: 100%;
     }
 }
 
 @media ( max-width: $extra-small ) {
         .product-card {  
             .product-card__content {
-                padding-left: 3em;
+                margin-left: 4em;
             }
         }
         .product__cta {
             & button span {
-                font-size: 4em;
+                width: 12em;
             }
         }
 }
